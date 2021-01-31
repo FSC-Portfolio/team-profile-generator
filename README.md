@@ -1,10 +1,10 @@
 [![None :)](https://img.shields.io/badge/License-None-&#58&#41-yellow)](https://img.shields.io/badge/License-&#58&#41-yellow)
 # Team Profile Generator
 ## Description
-Allows the user to create a profile of their team in html / css format.
+Allows the user to create a profile of their team in a html / css format.
 ## Table of Contents
 > - [Description](#Description)
-> - [Table of Contents](#Table%20of%20Contents)
+> - [Table of Contents](#Table of Contents)
 > - [Installation](#Installation)
 > - [Usage](#Usage)
 > - [License](#License)
@@ -13,7 +13,17 @@ Allows the user to create a profile of their team in html / css format.
 > - [Questions](#Questions)
 
 ## Installation
-N/A
+```md
+__tests__/			// jest tests
+  Employee.test.js
+  Engineer.test.js
+  Intern.test.js
+  Manager.test.js
+dist/               // rendered output (HTML) and CSS style sheet
+lib/				// classes
+src/				// template helper code
+index.js			// runs the application
+```
 ## Usage
 N/A
 ## License
