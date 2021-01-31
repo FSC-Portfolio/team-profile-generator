@@ -1,0 +1,27 @@
+{
+  "name": "team-profile-generator",
+  "version": "1.0.0",
+  "description": "[![None :)](https://img.shields.io/badge/License-None-&#58&#41-yellow)](https://img.shields.io/badge/License-&#58&#41-yellow) # Team Profile Generator ## Description Allows the user to create a profile of their team in a html / css format. ## Table of Contents > - [Description](#Description) > - [Table of Contents](#Table of Contents) > - [Installation](#Installation) > - [Usage](#Usage) > - [License](#License) > - [Contributing](#Contributing) > - [Tests](#Tests) > - [Questions](#Questions)",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JayArghArgh/team-profile-generator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JayArghArgh/team-profile-generator/issues"
+  },
+  "homepage": "https://github.com/JayArghArgh/team-profile-generator#readme",
+  "dependencies": {
+    "inquirer": "^7.3.3",
+    "jest": "^26.6.3"
+  }
+}
