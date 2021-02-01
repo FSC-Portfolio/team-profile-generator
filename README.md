@@ -4,7 +4,7 @@
 Allows the user to create a profile of their team in a html / css format.
 ## Table of Contents
 > - [Description](#Description)
-> - [Table of Contents](#Table of Contents)
+> - [Table of Contents](#Table-of-Contents)
 > - [Installation](#Installation)
 > - [Usage](#Usage)
 > - [License](#License)

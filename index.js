@@ -1,3 +1,5 @@
+const inquirer = require('inquirer');
+
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
@@ -10,3 +12,11 @@ console.log(thisEngineer.getRole());
 
 const thisIntern = new Intern("justin", 1001, "jayarghargh@gmail.com", "Monash");
 console.log(thisIntern.getRole());
+
+// Enter managers creds
+
+// menu to add engineer / intern
+
+// add selection, return to menu
+
+// exit option
