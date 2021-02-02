@@ -4,19 +4,114 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
-const thisManager = new Manager("justin", 1001, "jayarghargh@gmail.com", 23);
-console.log(thisManager.getName(), thisManager.getRole());
+const employees = [];
 
-const thisEngineer = new Engineer("justin", 1001, "jayarghargh@gmail.com", "jayarghargh");
-console.log(thisEngineer.getRole());
+const joinQuestions = (q1, q2) => {
+	// Takes two arrays and joins them together after 'safely' copying the first array.
+	q1 = JSON.stringify(q1);
+	q1 = JSON.parse(q1);
 
-const thisIntern = new Intern("justin", 1001, "jayarghargh@gmail.com", "Monash");
-console.log(thisIntern.getRole());
+	// Push array two contents to array 1.
+	for (item in q2) {
+		q1.push(q2[item]);
+	}
 
-// Enter managers creds
+	// Return the new array.
+	return q1;
+}
 
-// menu to add engineer / intern
+// An array of questions to be asked for each team member.
+// TODO these questions _could_ be added to the classes.
+let standardQuestions = [
+	{
+		type: 'input',
+		message: 'Please enter a name: ',
+		name: 'username'
+	},
+	{
+		type: 'number',
+		message: 'Please enter ID Number: ',
+		name: 'id'
+	},
+	{
+		type: 'input',
+		message: 'Please enter an email: ',
+		name: 'email'
+	},
+]
 
-// add selection, return to menu
+const menuQuestions = [
+	{
+	type: "list",
+	message: "would you like to add...",
+	choices: ["Engineer", "Intern", "Quit"],
+	name: "keepAdding"
+	},
+]
 
-// exit option
+const managerQuestions = [
+	{
+		type: 'input',
+		message: 'Please enter an office number: ',
+		name: 'office'
+	},
+]
+
+const engineerQuestions = [
+	{
+	type: 'input',
+	message: 'Please enter a GitHub username: ',
+	name: 'github'
+	},
+]
+
+const internQuestions = [
+	{
+	type: 'input',
+	message: 'Please enter a school: ',
+	name: 'school'
+	},
+]
+
+// This is where the magic happens: async, await, inquirer.prompt
+async function main() {
+	// Ask the Manager Questions and create a Manager first
+	const askManager = await inquirer.prompt(joinQuestions(standardQuestions, managerQuestions));
+	employees.push(new Manager(askManager.username, askManager.id, askManager.email, askManager.officeNumber));
+
+	// Check if the user wants to add more team members.
+	let newQ = await inquirer.prompt(menuQuestions);
+
+	// Set up for branching and recursion.
+	if (newQ.keepAdding !== 'Quit') {
+		let gameOn = true;
+		while (gameOn) {
+			switch (newQ.keepAdding) {
+				case 'Engineer':
+					// Ask Engineer Q's
+					const askEngineer = await inquirer.prompt(joinQuestions(standardQuestions, engineerQuestions));
+					// Create the new Engineer and add to employees array.
+					employees.push(new Engineer(askEngineer.username, askEngineer.id, askEngineer.email, askEngineer.github));
+					newQ = await inquirer.prompt(menuQuestions);
+					break;
+				case 'Intern':
+					// Ask Intern Q's, create new Intern.
+					const askIntern = await inquirer.prompt(joinQuestions(standardQuestions, internQuestions));
+					// Create the new Intern and add to employees array.
+					employees.push(new Intern(askIntern.username, askIntern.id, askIntern.email, askIntern.school));
+					newQ = await inquirer.prompt(menuQuestions);
+					break;
+				default:
+					// Simply exit the loop.
+					gameOn = false;
+			}
+		}
+	}
+	// The user has quit.
+	for (const employee in employees) {
+		console.log(employees[employee].getRole());
+	}
+}
+
+// Run the program, assign main() as a variable to ditch the promise ignored warning.
+let promise = main();
