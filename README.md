@@ -35,7 +35,7 @@ This application is covered under None.
 Appreciate the bug reporting!
 ## Tests
 ```node run test```
-Each class is tested for instantiation and method returns.
+Each class is tested for instantiation and method returns using Jest.
 ## Questions
 Please refer any questions to [![JayArghArgh](https://img.shields.io/badge/Dev-JayArghArgh-yellow)](https://github.com/JayArghArgh) via jayarghargh@gmail.com.
 
