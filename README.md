@@ -2,6 +2,8 @@
 # Team Profile Generator
 ## Description
 Allows the user to create a profile of their team in a html / css format.
+[view screencast on youtube(including tests)](https://youtu.be/znRy1zGvWdw)
+
 ![screenshot](./src/screenshot.png)
 ## Table of Contents
 > - [Description](#Description)
@@ -34,7 +36,7 @@ This application is covered under None.
 ## Contributing
 Appreciate the bug reporting!
 ## Tests
-```node run test```
+```npm run test```
 Each class is tested for instantiation and method returns using Jest.
 ## Questions
 Please refer any questions to [![JayArghArgh](https://img.shields.io/badge/Dev-JayArghArgh-yellow)](https://github.com/JayArghArgh) via jayarghargh@gmail.com.
