@@ -1,18 +1,27 @@
+// Load packages
 const inquirer = require('inquirer');
+const fs = require('fs');
+const templateIndex = './dist/index.html';
+const templateCard = require('./src/card');
+const templateHeader = require('./src/header');
+const templateFooter = require('./src/footer');
 
+// Load my classes
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 
+// Array to hold all the employee objects.
 const employees = [];
 
+// Set up all the questions
 const joinQuestions = (q1, q2) => {
 	// Takes two arrays and joins them together after 'safely' copying the first array.
 	q1 = JSON.stringify(q1);
 	q1 = JSON.parse(q1);
 
 	// Push array two contents to array 1.
-	for (item in q2) {
+	for (const item in q2) {
 		q1.push(q2[item]);
 	}
 
@@ -107,10 +116,21 @@ async function main() {
 			}
 		}
 	}
-	// The user has quit.
+	// The user has quit - get the output ready.
+	let fileOutput = templateHeader.returnHeader();
 	for (const employee in employees) {
 		console.log(employees[employee].getRole());
+		// Merge the responses with the template.
+		fileOutput += templateCard.createCard(employees[employee]);
 	}
+
+	// add the footer to the output
+	fileOutput += templateFooter.returnFooter();
+
+	// Write the readme to the exports file.
+	fs.writeFile(templateIndex, fileOutput, (err) =>
+		err ? console.error(err) : console.log('File exported')
+	);
 }
 
 // Run the program, assign main() as a variable to ditch the promise ignored warning.
