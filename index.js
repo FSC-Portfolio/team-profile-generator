@@ -86,7 +86,7 @@ const internQuestions = [
 async function main() {
 	// Ask the Manager Questions and create a Manager first
 	const askManager = await inquirer.prompt(joinQuestions(standardQuestions, managerQuestions));
-	employees.push(new Manager(askManager.username, askManager.id, askManager.email, askManager.officeNumber));
+	employees.push(new Manager(askManager.username, askManager.id, askManager.email, askManager.office));
 
 	// Check if the user wants to add more team members.
 	let newQ = await inquirer.prompt(menuQuestions);
@@ -132,6 +132,8 @@ async function main() {
 		err ? console.error(err) : console.log('File exported')
 	);
 }
+
+
 
 // Run the program, assign main() as a variable to ditch the promise ignored warning.
 let promise = main();

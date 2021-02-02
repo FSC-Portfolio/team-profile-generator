@@ -1,14 +1,37 @@
 "use strict";
+
 const createCard = (employee) => {
-	let empCard = `<div className="card" style="width: 18rem;">
-	<img src="https://loremflickr.com/200/200/${employee.getRole()}?random=${employee.getId()}" className="card-img-top" alt="...">
-		<div className="card-body">
-			<h5 className="card-title">${employee.getRole()}</h5>
-			<p className="card-text">${employee.getName()}</p>
-			<p className="card-text">${employee.getId()}</p>
-			<p className="card-text">${employee.getEmail()}</p>
+	const employeeValues = Object.values(employee);
+	let roleHeading;
+	let roleLink = employeeValues[3];
+
+	switch (employee.getRole()) {
+		case 'Manager':
+			roleHeading = 'Office Number';
+			break;
+		case 'Engineer':
+			roleHeading = "GitHub";
+			roleLink = `<a href="https://github.com/${employeeValues[3]}" target="_blank">${employeeValues[3]}</a>`;
+			break;
+		case 'Intern':
+			roleHeading = "School";
+			break
+		default:
+			roleHeading = employee.getRole();
+			roleLink = employeeValues[3];
+	}
+
+
+	let empCard = `
+	<div class="card" style="width: 18rem;">
+	<img src="https://loremflickr.com/200/200/${employee.getRole()}?random=${employee.getId()}" class="card-img-top" alt="random portrait image">
+		<div class="card-body">
+			<h5 class="card-title">${employeeValues[0]}</h5>
+			<h6 class="card-subtitle mb-2 text-muted">${employeeValues[1]}</h6>
+			<p class="card-text">ID Number: ${employeeValues[2]}</p>
+			<p class="card-text">${roleHeading}: ${roleLink}</p>
 		</div>
-	</div>`;
+</div>`;
 	return empCard;
 }
 
