@@ -119,7 +119,6 @@ async function main() {
 	// The user has quit - get the output ready.
 	let fileOutput = templateHeader.returnHeader();
 	for (const employee in employees) {
-		console.log(employees[employee].getRole());
 		// Merge the responses with the template.
 		fileOutput += templateCard.createCard(employees[employee]);
 	}

@@ -1,35 +1,39 @@
 "use strict";
 
 const createCard = (employee) => {
-	const employeeValues = Object.values(employee);
+	// Creates a card for each employee.
 	let roleHeading;
-	let roleLink = employeeValues[3];
+	let roleLink;
 
 	switch (employee.getRole()) {
+		// Customises the card based on role.
 		case 'Manager':
 			roleHeading = 'Office Number';
+			roleLink = employee.getOffice();
 			break;
 		case 'Engineer':
 			roleHeading = "GitHub";
-			roleLink = `<a href="https://github.com/${employeeValues[3]}" target="_blank">${employeeValues[3]}</a>`;
+			roleLink = `<a href="https://github.com/${employee.getGithub()}" target="_blank">${employee.getGithub()}</a>`;
 			break;
 		case 'Intern':
 			roleHeading = "School";
+			roleLink = employee.getSchool();
 			break
 		default:
 			roleHeading = employee.getRole();
-			roleLink = employeeValues[3];
 	}
 
-
+	// Setup and return the card.
 	let empCard = `
 	<div class="card" style="width: 18rem;">
-	<img src="https://loremflickr.com/200/200/${employee.getRole()}?random=${employee.getId()}" class="card-img-top" alt="random portrait image">
+	<img src="https://loremflickr.com/200/200/portrait?random=${employee.getId()}" class="card-img-top" alt="random portrait image">
 		<div class="card-body">
-			<h5 class="card-title">${employeeValues[0]}</h5>
-			<h6 class="card-subtitle mb-2 text-muted">${employeeValues[1]}</h6>
-			<p class="card-text">ID Number: ${employeeValues[2]}</p>
+			<h5 class="card-title">${employee.getName()}</h5>
+			<h6 class="card-subtitle mb-2 text-muted">${employee.getRole()}</h6>
+			<p class="card-text">ID Number: ${employee.getId()}</p>
+<!--			<p class="card-text">Email: ${employee.getEmail()}</p>-->
 			<p class="card-text">${roleHeading}: ${roleLink}</p>
+			<a href="mailto: ${employee.getEmail()}" class="btn btn-primary">Email ${employee.getName()}</a>
 		</div>
 </div>`;
 	return empCard;
@@ -38,4 +42,3 @@ const createCard = (employee) => {
 module.exports = {
 	createCard,
 };
-// <a href="#" className="btn btn-primary">Go somewhere</a>
