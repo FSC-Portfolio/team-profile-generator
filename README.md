@@ -4,7 +4,7 @@
 Allows the user to create a profile of their team in a html / css format.
 [view screencast on youtube(including tests)](https://youtu.be/znRy1zGvWdw)
 
-![screenshot](./src/screenshot.png)
+![screenshot](./src/screenshot_alt.png)
 ## Table of Contents
 > - [Description](#Description)
 > - [Table of Contents](#Table-of-Contents)
